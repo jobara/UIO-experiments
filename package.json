@@ -1,0 +1,19 @@
+{
+  "name": "uio-experiments",
+  "version": "0.0.0",
+  "description": "Experiment with alternative implementations of UI Options",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jobara/UIO-experiments.git"
+  },
+  "author": "",
+  "license": "BSD-3-Clause",
+  "bugs": {
+    "url": "https://github.com/jobara/UIO-experiments/issues"
+  },
+  "homepage": "https://github.com/jobara/UIO-experiments#readme"
+}
