@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<head>
+    <title>UIO Experimentation with Preact Signals</title>
+
+    <script type="importmap">
+        {
+            "imports": {
+                "preact-signal": "https://npm.reversehttp.com/@preact/signals,preact,htm"
+            }
+        }
+    </script>
+    <script type="module" src="./js/index.js"></script>
+</head>
+<body>
+    <header>
+        <h1>UIO Experimentation with Preact Signals</h1>
+    </header>
+
+    <main id="main">
+        <!--
+            TODO:
+                - Model/controller - small preact signals module that holds the model and shares a signal for the model value
+                - Store - a module to persist the model to local storage, will also be used by the model/controller to fetch initial state
+                - Enactor - small component to output the model value to the page. Consumes a signal/effect
+                - Adjuster (preact) - a preact component that consumes a signal from the model/controller and can adjust the value
+                - Adjuster (web component) - a small webcomponent that consumes a signal/effect form the model/controller and can adjust the value
+        -->
+    </main>
+</body>

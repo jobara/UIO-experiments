@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/jobara/UIO-experiments/issues"
   },
-  "homepage": "https://github.com/jobara/UIO-experiments#readme"
+  "homepage": "https://github.com/jobara/UIO-experiments#readme",
+  "dependencies": {
+    "@preact/signals": "^1.2.3",
+    "preact": "^10.21.0"
+  }
 }
