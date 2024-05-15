@@ -1,0 +1,43 @@
+.at-only {
+    /* from https: //webaim.org/techniques/css/invisiblecontent/ */
+    clip: rect(1px, 1px, 1px, 1px);
+    clip-path: inset(50%);
+    height: 1px;
+    width: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+}
+
+:where([is="input-number-stepper"], input-number-stepper) {
+    column-gap: 1rem;
+    display: flex;
+    font-size: 1.5rem;
+}
+
+:where([is="input-number-stepper"], input-number-stepper) button {
+    border-radius: 2rem;
+    border: solid 1px black;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+:where([is="input-number-stepper"], input-number-stepper) button span {
+    margin-block-start: -0.2rem;
+}
+
+:where([is="input-number-stepper"], input-number-stepper) input {
+    -moz-appearance: textfield;
+}
+
+:where([is="input-number-stepper"], input-number-stepper) input::-webkit-outer-spin-button,
+:where([is="input-number-stepper"], input-number-stepper) input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Experimentation with Web Components</title>
+
+    <link rel="stylesheet" href="./css/stepper.css">
+    <script type="module" src="./js/stepper.js"></script>
+</head>
+
+<body>
+    <header>
+        <h1>Experimentation with Web Components</h1>
+    </header>
+
+    <main id="main">
+        <h3>Default look</h3>
+        <div>
+            <button class="stepper-decrement">down</button>
+            <label for="stepper" class="stepper-label">Stepper</label>
+            <input id="stepper" class="stepper-input" type="number" max="100" min="0" value="2">
+            <button class="stepper-increment">up</button>
+        </div>
+
+        <h2>Web Component</h2>
+        <h3>Using "is"</h3>
+        <div is="input-number-stepper">
+            <button class="decrement"><span aria-hidden="true">-</span><span class="at-only">minus</span></button>
+            <label for="stepper" class="at-only label">Stepper</label>
+            <input id="stepper" class="input" type="number" max="100" min="0" value="2">
+            <button class="increment"><span aria-hidden="true">+</span><span class="at-only">plus</button>
+        </div>
+        <h3>Autonomous</h3>
+        <input-number-stepper>
+            <button class="decrement"><span aria-hidden="true">-</span><span class="at-only">minus</button>
+            <label for="stepper" class="at-only label">Stepper</label>
+            <input id="stepper" class="input" type="number" max="100" min="0" value="2">
+            <button class="increment"><span aria-hidden="true">+</span><span class="at-only">plus</button>
+        </input-number-stepper>
+    </main>
+</body>
