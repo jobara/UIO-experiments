@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Experimentation with Combined Signals</title>
+</head>
+
+<body>
+    <header>
+        <h1>Experimentation with Combined Signals</h1>
+    </header>
+
+    <main id="main">
+        <div id="app"></div>
+
+        <script type="module">
+            "use strict";
+
+            import {html, render, signal, computed, effect} from "https://npm.reversehttp.com/preact,htm/preact,@preact/signals";
+
+            const storageKey = "combined-relay";
+            const allSignals = signal((JSON.parse(localStorage.getItem(storageKey)) ?? []).map(value => signal(value)));
+            const combinedSignal = computed(() => {
+                return allSignals.value.map(oneSig => oneSig.value);
+            });
+            const renderedSignal = computed(() => {
+                return JSON.stringify(combinedSignal.value);
+            });
+
+            effect(() => {
+                localStorage.setItem(storageKey, renderedSignal.value);
+            });
+
+            const addCounter = function () {
+                let counter = signal(0);
+                allSignals.value = [...allSignals.value, counter];
+            };
+
+            const reset = function () {
+                allSignals.value = [];
+            };
+
+            function App() {
+                return html`
+                <div>
+                    <h2 class>Counters</h2>
+                    <button onClick=${addCounter}>
+                        Add Counter
+                    </button>
+                    <button onClick=${reset}>
+                        Reset UI
+                    </button>
+                    <ul>
+                        ${allSignals.value.map((counterSignal, index) => {
+                            return html`
+                                <li>
+                                    <button onClick=${() => counterSignal.value++}>
+                                        Increment with signal ${index}
+                                    </button>
+                                    <p>Counter ${index}: ${counterSignal.value}</p>
+                                </li>
+                            `;
+                        })}
+                    </ul>
+                </div>
+                <div>Combined signal: ${renderedSignal.value}</div>
+            `;
+            }
+
+            render(html`<${App} />`, document.getElementById("app"));
+        </script>
+
+    </main>
+</body>
