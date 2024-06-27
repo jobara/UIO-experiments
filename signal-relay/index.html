@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Experimentation with Signals Relay</title>
+
+    <script type="importmap">
+        {
+            "imports": {
+                "preact-signal": "https://npm.reversehttp.com/@preact/signals,preact,htm",
+                "store": "./js/store.js",
+                "shared-state": "./js/shared-state.js",
+                "inputRelay": "./js/inputRelay.js",
+                "enactors": "./js/enactors.js"
+            }
+        }
+    </script>
+    <script type="module" src="./js/index.js"></script>
+</head>
+
+<body>
+    <header>
+        <h1>Experimentation with a Signals Relay</h1>
+    </header>
+
+    <main id="main">
+        <h2>Input panel</h2>
+        <form>
+            <input name="unobserved" type="text" value="shouldn't be found">
+            <input name="observed" type="text" data-input-relay="" value="should be found">
+            <input name="observed-path" type="text" data-input-relay="" data-input-relay-path="by-path" value="found path">
+            <span>shouldn't find</span>
+        </form>
+    </main>
+</body>
