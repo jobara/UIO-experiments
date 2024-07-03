@@ -10,20 +10,14 @@ for (let key in fetchedJSON) {
 }
 
 const state = signal(initial);
-const combined = computed(() => {
+const serialized = computed(() => {
     const deref = {};
 
     for (let key in state.value) {
         deref[key] = state.value[key].value;
     }
 
-    return deref;
+    return JSON.stringify(deref);
 });
 
-window.state = state;
-window.combined = combined;
-
-export { state, combined };
-
-// this is exposed on the window object to put it into the global context there.
-// should also be importable into other modules and maintain live bindings there too.
+export {state, serialized };

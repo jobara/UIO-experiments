@@ -3,6 +3,8 @@
 <head>
     <title>Experimentation with Signals Relay</title>
 
+    <link rel="stylesheet" href="./css/index.css">
+
     <script type="importmap">
         {
             "imports": {
@@ -14,6 +16,7 @@
             }
         }
     </script>
+    <script src="./js/insert-input.js"></script>
     <script type="module" src="./js/index.js"></script>
 </head>
 
@@ -23,12 +26,45 @@
     </header>
 
     <main id="main">
-        <h2>Input panel</h2>
-        <form>
-            <input name="unobserved" type="text" value="shouldn't be found">
-            <input name="observed" type="text" data-input-relay="" value="should be found">
-            <input name="observed-path" type="text" data-input-relay="" data-input-relay-path="by-path" value="found path">
-            <span>shouldn't find</span>
+        <h2>Insert inputs</h2>
+        <form class="input-insert">
+            <label>Label: <input type="text" name="label" required></label>
+            <label>Name: <input type="text" name="name" required></label>
+            <label>Initial value: <input type="text" name="value"></label>
+
+            <fieldset>
+                <legend><h3>Relayed Input</h3></legend>
+                <label for="input-insert-observed">Observed:</label>
+                <input id="input-insert-observed" class="input-insert-observed" type="checkbox" name="observed">
+                <label class="input-insert-path">Path: <input type="text" name="path"></label>
+            </fieldset>
+            <button type="submit">Add Input</button>
+        </form>
+        <h2>Relayed Inputs</h2>
+        <form class="relay-panel">
+            <ul class="insert-to">
+                <li>
+                    <label>
+                        Unobserved:
+                        <input name="unobserved" type="text" value="shouldn't be found">
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        Observed:
+                        <input name="observed" type="text" data-input-relay="" value="should be found">
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        Observed with path:
+                        <input name="observed-path" type="text" data-input-relay="" data-input-relay-path="by-path" value="found path">
+                    </label>
+                </li>
+            </ul>
         </form>
     </main>
+    <script>
+        inputInserter(".input-insert");
+    </script>
 </body>

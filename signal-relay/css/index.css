@@ -1,0 +1,3 @@
+.input-insert-observed:not(:checked) ~ .input-insert-path {
+    display: none;
+}
