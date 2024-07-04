@@ -1,3 +1,111 @@
-.input-insert-observed:not(:checked) ~ .input-insert-path {
+body {
+    background-color: #2B2E38;
+    color: #EAEDF3;
+    font-size: 1.5rem;
+}
+
+code {
+    background-color: #4B5560;
+    font-size: 1rem;
+}
+
+h1 {
+    text-align: center;
+}
+
+main {
+    column-gap: 2rem;
+    row-gap: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+main > * {
+    width: 50ch;
+}
+
+input,
+textarea,
+select {
+    display: block;
+    width: calc(100% - 0.5rem);
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+    display: inline-block;
+    width: 1rem;
+}
+
+button[type="submit"] {
+    margin-block-start: 2rem;
+    padding: 1rem 0.5rem;
+}
+
+.center {
+    margin-inline: auto;
+    max-inline-size: 140ch;
+    padding-inline: 1rem;
+}
+
+.column {
+    row-gap: 0.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+[role="list"] {
+    list-style-type: none;
+    padding-inline-start: 0;
+}
+
+.panel {
+    background-color: #4B5560;
+    border-radius: 0.5rem;
+    padding: 1rem;
+}
+
+.panel:last-of-type {
+    width: calc(100vw - 2rem);
+}
+
+.panel h2 {
+    margin-block-start: 0;
+}
+
+.input-insert-observed legend {
+    margin-block-end: -2rem;
+}
+
+.input-insert-observed:has( .input-insert-observed-check:not(:checked)) .input-insert-observed-conditional {
     display: none;
+}
+
+.relay-panel li {
+    border: 2px solid transparent;
+    border-radius: 0.5rem;
+    color: #112A46;
+    padding: 1rem;
+}
+
+.relay-panel label:has( input[data-input-relay])::before {
+    content: "🧐";
+    margin-inline-end: 0.5rem;
+}
+
+.relay-panel li:has( input[data-input-relay]) {
+    background-color: #C3EDEC;
+    border-color: #00AEA9;
+}
+
+.relay-panel label:not(:has( input[data-input-relay]))::before {
+    content: "🫥";
+    margin-inline-end: 0.5rem;
+}
+
+.relay-panel li:not(:has( input[data-input-relay])) {
+    background-color: #FFF0F0; /* FFF0F0 */
+    border-color: #922020;
+    border-style: dashed;
 }

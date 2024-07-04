@@ -1,8 +1,8 @@
 import {effect, computed} from 'preact-signal';
-import {state, serialized} from "shared-state";
+import {state, serialized, serializedPretty} from "shared-state";
 import {inputRelay} from "inputRelay";
 import {set, fetch, remove} from "store";
-import {log} from "enactors";
+import {log, render} from "enactors";
 
 effect(() => {
     set('signal-test', serialized.value);
@@ -13,4 +13,5 @@ inputRelay({
 });
 
 log("serialized", serialized);
+render(".output", serializedPretty);
 

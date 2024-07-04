@@ -21,48 +21,58 @@
 </head>
 
 <body>
-    <header>
+    <header class="center">
         <h1>Experimentation with a Signals Relay</h1>
     </header>
 
-    <main id="main">
-        <h2>Insert inputs</h2>
-        <form class="input-insert">
-            <label>Label: <input type="text" name="label" required></label>
-            <label>Name: <input type="text" name="name" required></label>
-            <label>Initial value: <input type="text" name="value"></label>
+    <main class="center" id="main">
+        <div class="panel">
+            <h2>Insert inputs</h2>
+            <form class="input-insert column">
+                <label>Label: <input type="text" name="label" required></label>
+                <label>Name: <input type="text" name="name" required></label>
+                <label>Initial value: <input type="text" name="value"></label>
 
-            <fieldset>
-                <legend><h3>Relayed Input</h3></legend>
-                <label for="input-insert-observed">Observed:</label>
-                <input id="input-insert-observed" class="input-insert-observed" type="checkbox" name="observed">
-                <label class="input-insert-path">Path: <input type="text" name="path"></label>
-            </fieldset>
-            <button type="submit">Add Input</button>
-        </form>
-        <h2>Relayed Inputs</h2>
-        <form class="relay-panel">
-            <ul class="insert-to">
-                <li>
-                    <label>
-                        Unobserved:
-                        <input name="unobserved" type="text" value="shouldn't be found">
-                    </label>
-                </li>
-                <li>
-                    <label>
-                        Observed:
-                        <input name="observed" type="text" data-input-relay="" value="should be found">
-                    </label>
-                </li>
-                <li>
-                    <label>
-                        Observed with path:
-                        <input name="observed-path" type="text" data-input-relay="" data-input-relay-path="by-path" value="found path">
-                    </label>
-                </li>
-            </ul>
-        </form>
+                <fieldset class="input-insert-observed column">
+                    <legend><h3>Relayed Input</h3></legend>
+                    <label>Observed: <input class="input-insert-observed-check" type="checkbox" name="observed"></label>
+                    <label class="input-insert-observed-conditional">Path: <input type="text" name="path"></label>
+                </fieldset>
+                <button type="submit">Add Input</button>
+            </form>
+        </div>
+        <div class="panel">
+            <h2>Relayed Inputs</h2>
+            <form class="relay-panel">
+                <ul class="insert-to column" role="list">
+                    <li>
+                        <label>
+                            Unobserved:
+                            <input name="unobserved" type="text" value="shouldn't be found">
+                        </label>
+                    </li>
+                    <li>
+                        <label>
+                            Observed:
+                            <input name="observed" type="text" data-input-relay="" value="should be found">
+                        </label>
+                    </li>
+                    <li>
+                        <label>
+                            Observed with path:
+                            <input name="observed-path" type="text" data-input-relay="" data-input-relay-path="by-path" value="found path">
+                        </label>
+                    </li>
+                </ul>
+            </form>
+        </div>
+        <div class="panel">
+            <h2 id="relayed-panel-data">Relayed Data</h2>
+            <pre role="status" aria-labelledby="relayed-panel-data">
+<code class="output language-css">
+</code>
+            </pre>
+        </div>
     </main>
     <script>
         inputInserter(".input-insert");

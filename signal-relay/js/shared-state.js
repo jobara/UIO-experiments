@@ -20,4 +20,14 @@ const serialized = computed(() => {
     return JSON.stringify(deref);
 });
 
-export {state, serialized };
+const serializedPretty = computed(() => {
+    const deref = {};
+
+    for (let key in state.value) {
+        deref[key] = state.value[key].value;
+    }
+
+    return JSON.stringify(deref, null, 4);
+});
+
+export {state, serialized, serializedPretty};

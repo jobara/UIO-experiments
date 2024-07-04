@@ -6,4 +6,11 @@ function log(name, state) {
     return effect(() => console.log(`${name}: ${typeof state.value === "object" ? JSON.stringify(state.value) : state.value}`));
 }
 
-export { log };
+function render(selector, state) {
+    console.log("call render");
+    const node = document.querySelector(selector);
+
+    return effect(() => node.textContent = state.value);
+}
+
+export { log, render };
