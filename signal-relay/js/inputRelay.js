@@ -1,14 +1,6 @@
 import {signal, effect} from 'preact-signal';
 import {state} from "shared-state";
 
-const updateState = function (state, path, value) {
-    if (state.value[path] === value) {
-        return state;
-    }
-
-    return {...state.value, [path]: signal(value)};
-};
-
 const removeFromState = function (state, path) {
     if (state.value === undefined) {
         return state;
@@ -46,15 +38,9 @@ const addInput = function (input, options) {
     };
 
     const path = input.getAttribute(opt.path) || input.getAttribute("name");
-    let inputSignal;
 
-    if (state.value[path]) {
-        inputSignal = state.value[path];
-        input.value = inputSignal.value;
-    } else {
-        state.value = updateState(state, path, input.value);
-        inputSignal = state.value[path];
-    }
+    const inputSignal = state.value[path] || signal(input.value);
+    state.value = {...state.value, [path]: inputSignal};
 
     effect(() => {
         input.value = inputSignal.value;
