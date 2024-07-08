@@ -7,7 +7,6 @@ function log(name, state) {
 }
 
 function render(selector, state) {
-    console.log("call render");
     const node = document.querySelector(selector);
 
     return effect(() => node.textContent = state.value);

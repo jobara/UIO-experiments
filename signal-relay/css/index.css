@@ -109,3 +109,9 @@ button[type="submit"] {
     border-color: #922020;
     border-style: dashed;
 }
+
+.remove-label::before {
+    content: "❌";
+    font-size: 0.7rem;
+    margin-inline-end: 0.3rem;
+}

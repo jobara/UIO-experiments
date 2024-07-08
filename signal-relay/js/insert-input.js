@@ -13,6 +13,7 @@ const insert = function (outputSelector, data) {
                 ${data.path ? `data-input-relay-path="${data.path}"` : ""}
             >
         </label>
+        <button class="remove" type="button"><span class="remove-label">Remove</span></button>
     `;
 
     output.append(elm);

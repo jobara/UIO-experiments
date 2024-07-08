@@ -50,18 +50,21 @@
                             Unobserved:
                             <input name="unobserved" type="text" value="shouldn't be found">
                         </label>
+                        <button class="remove" type="button"><span class="remove-label">Remove</span></button>
                     </li>
                     <li>
                         <label>
                             Observed:
                             <input name="observed" type="text" data-input-relay="" value="should be found">
                         </label>
+                        <button class="remove" type="button"><span class="remove-label">Remove</span></button>
                     </li>
                     <li>
                         <label>
                             Observed with path:
                             <input name="observed-path" type="text" data-input-relay="" data-input-relay-path="by-path" value="found path">
                         </label>
+                        <button class="remove" type="button"><span class="remove-label">Remove</span></button>
                     </li>
                 </ul>
             </form>
@@ -76,5 +79,36 @@
     </main>
     <script>
         inputInserter(".input-insert");
+
+        // bind the removal buttons
+        const removeButtons = document.querySelectorAll(".remove");
+        removeButtons.forEach(node => {
+            node.addEventListener("click", () => {
+                node.parentElement.remove();
+            });
+        });
+
+        const observer = new MutationObserver(records => {
+            records.forEach((record) => {
+                record.addedNodes.forEach((node) => {
+                    if (node.classList.contains("remove")) {
+                        node.addEventListener("click", () => {
+                            node.parentElement.remove();
+                        });
+                    } else {
+                        const buttons = node.querySelectorAll(".remove");
+                        buttons.forEach(button => {
+                            button.addEventListener("click", () => {
+                                button.parentElement.remove();
+                            });
+                        });
+                    }
+                });
+            });
+        });
+        observer.observe(document.querySelector(".relay-panel"), {
+            childList: true,
+            subtree: true
+        });
     </script>
 </body>
